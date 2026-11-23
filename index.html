@@ -241,6 +241,21 @@ body.light-theme footer{background:#e8f5ec;color:#456452;border-color:#b6d8c2}
 body.light-theme .founder-card .role{color:#345843}
 body.light-theme .theme-toggle{background:#fff;color:#087b3b}
 @media(max-width:650px){.theme-toggle{margin:8px}}
+
+/* Newsletter demo */
+.newsletter-section{background:linear-gradient(145deg,#102319,#07110b);border-top:1px solid #17472b;border-bottom:1px solid #17472b}
+.newsletter-box{max-width:680px;margin:28px auto 0;padding:28px;background:#07110b;border:1px solid #267a43;border-radius:12px;text-align:left}
+.newsletter-box label{display:block;color:#b9d9c3;font-size:14px;margin:12px 0 6px}
+.newsletter-box input{width:100%;padding:13px;border:1px solid #267a43;border-radius:7px;background:#050a08;color:#e2fbe9;font-size:15px}
+.newsletter-box button{margin-top:15px;padding:12px 20px;background:#39ff88;color:#031008;border:0;border-radius:6px;font-weight:bold;cursor:pointer}
+.newsletter-note{color:#9bb8a5;font-size:12px;margin-top:12px}
+#newsletter-result{color:#9cffb8;font-size:14px;margin-top:12px;min-height:22px}
+body.light-theme .newsletter-section{background:#e8f5ec;border-color:#b6d8c2}
+body.light-theme .newsletter-box{background:#fff;border-color:#8bc9a1}
+body.light-theme .newsletter-box label{color:#345843}
+body.light-theme .newsletter-box input{background:#f4faf6;color:#102318;border-color:#8bc9a1}
+body.light-theme .newsletter-note{color:#456452}
+
 </style>
 </head>
 
@@ -369,6 +384,21 @@ body.light-theme .theme-toggle{background:#fff;color:#087b3b}
  </div>
 </section>
 
+
+<section id="newsletter" class="newsletter-section">
+ <h2 class="section-title">Stay Updated</h2>
+ <p class="subtitle">Get updates about new computer tutorials, Linux learning and cybersecurity awareness.</p>
+ <div class="newsletter-box">
+  <form id="newsletter-form">
+   <label for="newsletter-email">Email address (demo only)</label>
+   <input id="newsletter-email" type="email" placeholder="student@example.test" autocomplete="off" required>
+   <button type="submit">Preview Subscription</button>
+  </form>
+  <p id="newsletter-result" aria-live="polite"></p>
+  <p class="newsletter-note">Demo only: this form does not subscribe you, send email, or store your address. Do not enter your real email.</p>
+ </div>
+</section>
+
 <footer>
  <p>© 2026 <span>PC MASTER TIPS</span> | Made by Nagendra Gupta</p>
  <p>Learn Technology. Build Skills. Stay Secure.</p>
@@ -397,5 +427,14 @@ themeButton.addEventListener('click',()=>{
  themeButton.setAttribute('aria-label',isLight?'Switch to dark theme':'Switch to light theme');
 });
 </script>
+
+<script>
+const newsletterForm=document.getElementById('newsletter-form');
+if(newsletterForm){newsletterForm.addEventListener('submit',event=>{
+ event.preventDefault();
+ document.getElementById('newsletter-result').textContent='Demo preview complete. No subscription was created and no email address was sent or saved.';
+});}
+</script>
+
 </body>
 </html>
