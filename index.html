@@ -210,6 +210,14 @@ footer span{color:var(--green)}
  .terminal{margin:auto;text-align:left}
  section{padding:50px 6%}
 }
+
+.search-wrap{max-width:620px;margin:28px auto 0;text-align:left}
+.search-box{display:flex;gap:10px;align-items:center;background:#07110b;border:1px solid #267a43;border-radius:9px;padding:8px 12px;box-shadow:0 0 18px #39ff8815}
+.search-box span{color:#39ff88;font-size:20px}
+.search-box input{width:100%;background:transparent;border:0;outline:0;color:#e2fbe9;font-size:15px;padding:9px}
+.search-box input::placeholder{color:#83a58e}
+#search-status{color:#9bb8a5;font-size:13px;margin:9px 4px;min-height:20px}
+.card[hidden]{display:none}
 </style>
 </head>
 
@@ -287,7 +295,13 @@ footer span{color:var(--green)}
   Select your learning area and build your technical skills.
  </p>
 
- <div class="cards">
+
+ <div class="search-wrap">
+  <label class="search-box"><span>⌕</span><input id="topic-search" type="search" placeholder="Search Windows, Kali Linux, Cyber Security..." aria-label="Search learning topics"></label>
+  <p id="search-status" aria-live="polite">Search the learning topics above.</p>
+ </div>
+
+ <div class="cards" id="topic-cards">
 
   <div class="card">
    <div class="number">01 / BASICS</div>
@@ -335,5 +349,19 @@ footer span{color:var(--green)}
  <p>Learn Technology. Build Skills. Stay Secure.</p>
 </footer>
 
+
+<script>
+const topicSearch=document.getElementById('topic-search');
+const topicCards=[...document.querySelectorAll('#topic-cards .card')];
+const searchStatus=document.getElementById('search-status');
+topicSearch.addEventListener('input',()=>{
+ const term=topicSearch.value.trim().toLowerCase();let visible=0;
+ topicCards.forEach(card=>{
+  const match=card.textContent.toLowerCase().includes(term);
+  card.hidden=!match;if(match)visible++;
+ });
+ searchStatus.textContent=term?(visible+' topic(s) found.'):'Search the learning topics above.';
+});
+</script>
 </body>
 </html>
