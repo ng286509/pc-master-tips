@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kali Linux Beginner Guide | PC Master Tips</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#050a08;color:#e2fbe9;font-family:Arial,sans-serif;line-height:1.65}
+header{background:#08140e;border-bottom:1px solid #17472b;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{color:#39ff88;font-weight:bold;font-size:22px;text-shadow:0 0 12px #39ff88}
+nav a{color:#d9fbe4;text-decoration:none;margin-left:16px}
+nav a:hover,.back{color:#39ff88}
+main{max-width:1000px;margin:auto;padding:48px 7%}
+.kicker{font:13px monospace;letter-spacing:2px;color:#39ff88}
+h1{font-size:36px;margin:10px 0}
+.lead{color:#9bb8a5;margin-bottom:28px}
+.lesson{background:linear-gradient(145deg,#102319,#09140d);border:1px solid #1b5731;border-radius:12px;padding:23px;margin:18px 0}
+h2{color:#39ff88;font-size:22px;margin-bottom:8px}
+p{color:#b8d2c0}
+table{width:100%;border-collapse:collapse;margin-top:14px}
+th,td{text-align:left;padding:11px;border-bottom:1px solid #21452e}
+th{color:#39ff88}
+td{color:#cce8d5}
+code{background:#07110b;color:#8cffad;padding:4px 7px;border-radius:4px;font-family:monospace}
+.notice{background:#0b1b11;border-left:3px solid #39ff88;padding:13px;margin-top:15px;color:#b8d2c0}
+.back{display:inline-block;margin:22px 0;text-decoration:none}
+footer{text-align:center;padding:24px;background:#030805;color:#83a58e;border-top:1px solid #17472b}
+@media(max-width:600px){header{justify-content:center;text-align:center}nav a{margin:0 7px}h1{font-size:29px}table{font-size:13px}td,th{padding:8px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">[ PC MASTER TIPS ]</div>
+ <nav><a href="index.html">Home</a><a href="tutorials.html">Tutorials</a></nav>
+</header>
+<main>
+ <div class="kicker">/// LINUX LEARNING TRACK</div>
+ <h1>Kali Linux: Beginner Commands</h1>
+ <p class="lead">Start with everyday terminal commands. Read the explanation and practise inside your own Kali Linux virtual machine.</p>
+
+ <section class="lesson">
+  <h2>01. Know where you are</h2>
+  <table><tr><th>Command</th><th>What it does</th></tr>
+   <tr><td><code>pwd</code></td><td>Shows your current directory.</td></tr>
+   <tr><td><code>ls</code></td><td>Lists files and folders.</td></tr>
+   <tr><td><code>ls -la</code></td><td>Lists all entries, including hidden files, with details.</td></tr>
+   <tr><td><code>whoami</code></td><td>Shows the current username.</td></tr>
+  </table>
+ </section>
+
+ <section class="lesson">
+  <h2>02. Move around and manage folders</h2>
+  <table><tr><th>Command</th><th>What it does</th></tr>
+   <tr><td><code>cd Documents</code></td><td>Moves into Documents (if it exists here).</td></tr>
+   <tr><td><code>cd ..</code></td><td>Moves up one directory.</td></tr>
+   <tr><td><code>cd ~</code></td><td>Returns to your home directory.</td></tr>
+   <tr><td><code>mkdir practice</code></td><td>Creates a folder named practice.</td></tr>
+   <tr><td><code>touch notes.txt</code></td><td>Creates an empty file named notes.txt.</td></tr>
+  </table>
+ </section>
+
+ <section class="lesson">
+  <h2>03. Read and search text</h2>
+  <table><tr><th>Command</th><th>What it does</th></tr>
+   <tr><td><code>cat notes.txt</code></td><td>Prints a text file to the terminal.</td></tr>
+   <tr><td><code>less notes.txt</code></td><td>Opens a file for page-by-page reading; press q to quit.</td></tr>
+   <tr><td><code>grep "word" notes.txt</code></td><td>Finds lines containing the given word.</td></tr>
+  </table>
+ </section>
+
+ <section class="lesson">
+  <h2>04. Check system and network information</h2>
+  <table><tr><th>Command</th><th>What it does</th></tr>
+   <tr><td><code>uname -a</code></td><td>Displays kernel and system information.</td></tr>
+   <tr><td><code>df -h</code></td><td>Shows disk space usage.</td></tr>
+   <tr><td><code>free -h</code></td><td>Shows memory usage.</td></tr>
+   <tr><td><code>ip addr</code></td><td>Displays network interface addresses on your machine.</td></tr>
+   <tr><td><code>ip route</code></td><td>Displays your system's routing table.</td></tr>
+  </table>
+ </section>
+
+ <section class="lesson">
+  <h2>05. Update package information</h2>
+  <p><code>sudo apt update</code> refreshes the package lists. It does not upgrade installed applications by itself.</p>
+  <div class="notice">Only run commands you understand. Use security-testing tools only against systems you own or have explicit permission to test. Never scan or access someone else's device without permission.</div>
+ </section>
+
+ <a class="back" href="tutorials.html">← Back to Tutorials</a>
+</main>
+<footer>© 2026 PC MASTER TIPS | Made by Nagendra Gupta</footer>
+</body>
+</html>
