@@ -35,12 +35,27 @@ header{
  flex-wrap:wrap;
  gap:15px;
 }
+.brand-wrap{display:flex;align-items:center;gap:13px}
+.brand-mark{
+ width:48px;height:48px;flex:0 0 48px;
+ display:grid;place-items:center;
+ border:1px solid var(--green);border-radius:10px;
+ color:var(--green);font-family:monospace;font-weight:bold;
+ font-size:15px;letter-spacing:-1px;
+ background:#0b2113;
+ box-shadow:0 0 16px #39ff8840,inset 0 0 12px #39ff8820;
+}
 .logo{
  color:var(--green);
- font-size:25px;
+ font-size:23px;
  font-weight:bold;
+ letter-spacing:1px;
  text-shadow:0 0 12px #39ff88;
 }
+.founder-line{
+ color:#9bb8a5;font-size:12px;letter-spacing:1px;margin-top:3px
+}
+.founder-line span{color:var(--green)}
 nav a{
  color:#d9fbe4;
  text-decoration:none;
@@ -182,10 +197,11 @@ footer span{color:var(--green)}
 <body>
 
 <header>
- <div>
-  <div class="logo">[ PC MASTER TIPS ]</div>
-  <div style="color:#9bb8a5;font-size:12px;letter-spacing:1px;margin-top:3px">
-   Founder &amp; Creator: <span style="color:#39ff88">Nagendra Gupta</span>
+ <div class="brand-wrap">
+  <div class="brand-mark">PMT</div>
+  <div>
+   <div class="logo">PC MASTER TIPS</div>
+   <div class="founder-line">Founder &amp; Creator: <span>Nagendra Gupta</span></div>
   </div>
  </div>
  <nav>
