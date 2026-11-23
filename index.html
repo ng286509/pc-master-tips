@@ -218,6 +218,29 @@ footer span{color:var(--green)}
 .search-box input::placeholder{color:#83a58e}
 #search-status{color:#9bb8a5;font-size:13px;margin:9px 4px;min-height:20px}
 .card[hidden]{display:none}
+
+/* Theme toggle */
+.theme-toggle{border:1px solid #39ff88;background:#0b2113;color:#39ff88;border-radius:7px;padding:8px 12px;cursor:pointer;font-weight:bold;font-size:13px;margin-left:14px}
+.theme-toggle:hover{box-shadow:0 0 14px #39ff8850}
+body.light-theme{background:#f4faf6;color:#102318}
+body.light-theme header,body.light-theme .about{background:#e8f5ec;border-color:#b6d8c2}
+body.light-theme nav a{color:#173d27}
+body.light-theme .logo,body.light-theme .section-title,body.light-theme .card h3,body.light-theme .founder-card h3{color:#087b3b;text-shadow:none}
+body.light-theme .hero{background:radial-gradient(ellipse at top,#d6f5df,#f4faf6 72%)}
+body.light-theme .hero p,body.light-theme .subtitle,body.light-theme .about p,body.light-theme .card p,body.light-theme .founder-card .bio{color:#456452}
+body.light-theme .card,body.light-theme .founder-card{background:#fff;border-color:#b6d8c2}
+body.light-theme .terminal{background:#fff;border-color:#8bc9a1}
+body.light-theme .terminal-head{background:#e0f3e6;color:#087b3b}
+body.light-theme .terminal-body{color:#176b38}
+body.light-theme .terminal-body .dim{color:#5b8068}
+body.light-theme .search-box{background:#fff;border-color:#8bc9a1}
+body.light-theme .search-box input{color:#102318}
+body.light-theme .search-box input::placeholder{color:#688674}
+body.light-theme #search-status{color:#456452}
+body.light-theme footer{background:#e8f5ec;color:#456452;border-color:#b6d8c2}
+body.light-theme .founder-card .role{color:#345843}
+body.light-theme .theme-toggle{background:#fff;color:#087b3b}
+@media(max-width:650px){.theme-toggle{margin:8px}}
 </style>
 </head>
 
@@ -243,6 +266,7 @@ footer span{color:var(--green)}
   <a href="tutorials.html">Tutorials</a>
   <a href="windows-tips.html">Windows Tips</a>
   <a href="cyber-security.html">Cyber Security</a>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">☀ Light Mode</button>
  </nav>
 </header>
 
@@ -361,6 +385,15 @@ topicSearch.addEventListener('input',()=>{
   card.hidden=!match;if(match)visible++;
  });
  searchStatus.textContent=term?(visible+' topic(s) found.'):'Search the learning topics above.';
+});
+</script>
+
+<script>
+const themeButton=document.getElementById('theme-toggle');
+themeButton.addEventListener('click',()=>{
+ const isLight=document.body.classList.toggle('light-theme');
+ themeButton.textContent=isLight?'☾ Dark Mode':'☀ Light Mode';
+ themeButton.setAttribute('aria-label',isLight?'Switch to dark theme':'Switch to light theme');
 });
 </script>
 </body>
