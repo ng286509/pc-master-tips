@@ -33,13 +33,20 @@ body{
 header{
  background:#08140e;
  border-bottom:1px solid #17472b;
- padding:20px 8%;
+ padding:16px 8% 12px;
  display:flex;
  justify-content:space-between;
  align-items:center;
  flex-wrap:wrap;
- gap:15px;
+ gap:12px 20px;
 }
+.header-top-right{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-left:auto}
+.header-top-right .theme-toggle{margin:0}
+.header-top-right nav{display:flex;align-items:center;gap:10px}
+.header-top-right a{display:inline-block;padding:8px 14px;border:1px solid var(--green);border-radius:6px;color:var(--green);font-weight:700;background:rgba(57,255,136,.08);text-decoration:none;font-size:13px}
+.header-top-right a:hover{background:var(--green);color:#031008}
+header>nav{width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;border-top:1px solid #17472b;padding-top:10px}
+header>nav a{margin:0}
 .brand-wrap{display:flex;align-items:center;gap:13px}
 .brand-mark{
  width:48px;height:48px;flex:0 0 48px;
@@ -68,8 +75,7 @@ nav a{
  font-size:14px;
 }
 nav a:hover{color:var(--green)}
-nav a[href="login.html"]{display:inline-block;padding:9px 15px;margin:0 4px;border:1px solid var(--green);border-radius:6px;color:var(--green);font-weight:700;background:rgba(57,255,136,.08);box-shadow:0 0 12px rgba(57,255,136,.10)}
-nav a[href="login.html"]:hover{background:var(--green);color:#031008;box-shadow:0 0 18px rgba(57,255,136,.35)}
+
 .hero{
  min-height:440px;
  padding:75px 8%;
@@ -211,6 +217,8 @@ footer{
 footer span{color:var(--green)}
 @media(max-width:650px){
  header{justify-content:center;text-align:center}
+ .header-top-right{width:100%;justify-content:center}
+ header>nav{justify-content:center}
  nav a{margin:0 8px}
  .hero{text-align:center;padding:60px 6%}
  .hero h1{font-size:34px}
@@ -276,6 +284,9 @@ body.light-theme .newsletter-note{color:#456452}
    <div class="founder-line">Founder &amp; Creator: <span>Nagendra Gupta</span></div>
   </div>
  </div>
+ <div class="header-top-right">
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">☀ Light Mode</button>
+ </div>
  <nav>
   <a href="#home">Home</a>
   <a href="#about">About</a>
@@ -290,7 +301,6 @@ body.light-theme .newsletter-note{color:#456452}
   <a href="news.html">Latest News</a>
   <a href="windows-tips.html">Windows Tips</a>
   <a href="cyber-security.html">Cyber Security</a>
-  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">☀ Light Mode</button>
  </nav>
 </header>
 
