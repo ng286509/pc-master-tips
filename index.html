@@ -4,109 +4,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PC Master Tips</title>
+<title>PC Master Tips | Cyber Security</title>
+
 <style>
-*{box-sizing:border-box}
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+html{scroll-behavior:smooth}
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#0b1220;
-  color:white;
+ background:#050a08;
+ color:#e2fbe9;
+ font-family:Arial,sans-serif;
+ line-height:1.6;
+}
+:root{
+ --green:#39ff88;
+ --dark:#08140e;
+ --panel:#0b1911;
+ --muted:#9bb8a5;
 }
 header{
-  background:#111c32;
-  padding:25px;
-  text-align:center;
+ background:#08140e;
+ border-bottom:1px solid #17472b;
+ padding:20px 8%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:15px;
 }
-header h1{color:#38bdf8;margin:0}
-nav{
-  background:#17243b;
-  padding:15px;
-  text-align:center;
+.logo{
+ color:var(--green);
+ font-size:25px;
+ font-weight:bold;
+ text-shadow:0 0 12px #39ff88;
 }
 nav a{
-  color:white;
-  text-decoration:none;
-  margin:12px;
+ color:#d9fbe4;
+ text-decoration:none;
+ margin-left:20px;
+ font-size:14px;
 }
+nav a:hover{color:var(--green)}
 .hero{
-  text-align:center;
-  padding:65px 20px;
-  background:linear-gradient(120deg,#12345a,#075985);
+ min-height:440px;
+ padding:75px 8%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:35px;
+ background:radial-gradient(ellipse at top,#123b23,#050a08 70%);
 }
-.hero h2{font-size:36px}
-.hero p{font-size:18px}
-section{padding:35px 20px;text-align:center}
+.hero-content{max-width:570px}
+.tag{
+ color:var(--green);
+ letter-spacing:3px;
+ font-size:13px;
+}
+.hero h1{
+ font-size:45px;
+ line-height:1.2;
+ margin:18px 0;
+}
+.hero h1 span{color:var(--green)}
+.hero p{color:var(--muted)}
+.btn{
+ display:inline-block;
+ margin-top:25px;
+ padding:12px 25px;
+ background:var(--green);
+ color:#031008;
+ text-decoration:none;
+ font-weight:bold;
+ border-radius:5px;
+ box-shadow:0 0 18px #39ff8860;
+}
+.btn:hover{background:#a2ffc3}
+.terminal{
+ width:100%;
+ max-width:390px;
+ background:#07110b;
+ border:1px solid #267a43;
+ border-radius:10px;
+ overflow:hidden;
+ box-shadow:0 0 30px #39ff8820;
+}
+.terminal-head{
+ background:#102719;
+ padding:12px 16px;
+ color:var(--green);
+ font-size:13px;
+}
+.terminal-body{
+ padding:22px;
+ font-family:monospace;
+ color:#9cffb8;
+ font-size:14px;
+}
+.terminal-body p{margin:9px 0}
+.terminal-body .dim{color:#6b9d7a}
+section{
+ padding:65px 8%;
+ text-align:center;
+}
+.section-title{
+ color:var(--green);
+ font-size:30px;
+ margin-bottom:12px;
+}
+.subtitle{
+ color:var(--muted);
+ max-width:650px;
+ margin:0 auto;
+}
 .cards{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:20px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:22px;
+ margin-top:35px;
 }
 .card{
-  background:#17243b;
-  padding:25px;
-  border-radius:12px;
-  width:260px;
+ background:linear-gradient(145deg,#102319,#09140d);
+ border:1px solid #1b5731;
+ border-radius:10px;
+ padding:28px 20px;
+ text-align:left;
+ transition:.25s;
 }
-.card h3{color:#38bdf8}
+.card:hover{
+ transform:translateY(-6px);
+ border-color:var(--green);
+ box-shadow:0 0 20px #39ff8820;
+}
+.card .number{
+ color:var(--green);
+ font-family:monospace;
+ font-size:13px;
+}
+.card h3{
+ color:#70ffa0;
+ margin:12px 0;
+}
+.card p{color:var(--muted);font-size:14px}
+.about{
+ background:#08140e;
+ border-top:1px solid #153a24;
+ border-bottom:1px solid #153a24;
+}
+.about p{
+ max-width:750px;
+ margin:15px auto;
+ color:var(--muted);
+}
 footer{
-  background:#111c32;
-  text-align:center;
-  padding:20px;
-  color:#aaa;
+ text-align:center;
+ padding:28px 15px;
+ color:#83a58e;
+ background:#030805;
+ border-top:1px solid #17472b;
+ font-size:13px;
+}
+footer span{color:var(--green)}
+@media(max-width:650px){
+ header{justify-content:center;text-align:center}
+ nav a{margin:0 8px}
+ .hero{text-align:center;padding:60px 6%}
+ .hero h1{font-size:34px}
+ .terminal{margin:auto;text-align:left}
+ section{padding:50px 6%}
 }
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>PC MASTER TIPS</h1>
-<p>Learn Technology with Nagendra</p>
+ <div class="logo">[ PC MASTER TIPS ]</div>
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#topics">Topics</a>
+ </nav>
 </header>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#topics">Topics</a>
-</nav>
-
 <div class="hero" id="home">
-<h2>Welcome to PC Master Tips</h2>
-<p>Learn Computer, Technology, Software and Coding.</p>
+ <div class="hero-content">
+  <div class="tag">/// TECHNOLOGY • SECURITY • KNOWLEDGE</div>
+  <h1>Think Like a <span>Hacker.</span><br>Learn Like a Pro.</h1>
+  <p>
+   Explore Computer Technology, Linux, Cyber Security
+   Awareness and Programming. Learn step by step.
+  </p>
+  <a class="btn" href="#topics">Explore Learning →</a>
+ </div>
+
+ <div class="terminal">
+  <div class="terminal-head">● ● ● &nbsp; PC-MASTER-TERMINAL</div>
+  <div class="terminal-body">
+   <p class="dim">nagendra@pc-master:~$</p>
+   <p>Initializing Learning System...</p>
+   <p style="color:#39ff88">[ OK ] Computer Basics</p>
+   <p style="color:#39ff88">[ OK ] Linux Environment</p>
+   <p style="color:#39ff88">[ OK ] Cyber Awareness</p>
+   <p style="color:#39ff88">[ OK ] Coding Skills</p>
+   <p class="dim">System Status: Ready_</p>
+  </div>
+ </div>
 </div>
 
-<section id="about">
-<h2>About Us</h2>
-<p>PC Master Tips is an educational platform
-for learning computers and technology.</p>
-<p>Made by Nagendra</p>
+<section id="about" class="about">
+ <h2 class="section-title">About The Platform</h2>
+ <p>
+  PC Master Tips is an educational platform created to
+  make technology easier for everyone. Learn computer
+  skills, Linux, safe cybersecurity practices and coding.
+ </p>
+ <p style="color:#39ff88">Created by Nagendra Gupta</p>
 </section>
 
 <section id="topics">
-<h2>Our Learning Topics</h2>
-<div class="cards">
-<div class="card">
-<h3>Computer Basics</h3>
-<p>Learn computer fundamentals.</p>
-</div>
-<div class="card">
-<h3>Windows Tips</h3>
-<p>Useful Windows tricks and tutorials.</p>
-</div>
-<div class="card">
-<h3>Kali Linux</h3>
-<p>Learn Linux and cybersecurity safely.</p>
-</div>
-<div class="card">
-<h3>Coding</h3>
-<p>Learn HTML, CSS and JavaScript.</p>
-</div>
-</div>
+ <h2 class="section-title">Explore The Knowledge Base</h2>
+ <p class="subtitle">
+  Select your learning area and build your technical skills.
+ </p>
+
+ <div class="cards">
+
+  <div class="card">
+   <div class="number">01 / BASICS</div>
+   <h3>Computer Basics</h3>
+   <p>Computer fundamentals, hardware, software and essential skills.</p>
+  </div>
+
+  <div class="card">
+   <div class="number">02 / SYSTEM</div>
+   <h3>Windows Tips</h3>
+   <p>Windows features, shortcuts, troubleshooting and useful tools.</p>
+  </div>
+
+  <div class="card">
+   <div class="number">03 / LINUX</div>
+   <h3>Kali Linux</h3>
+   <p>Linux commands, terminal basics and ethical security learning.</p>
+  </div>
+
+  <div class="card">
+   <div class="number">04 / SECURITY</div>
+   <h3>Cyber Security</h3>
+   <p>Understand online threats, phishing awareness and digital safety.</p>
+  </div>
+
+  <div class="card">
+   <div class="number">05 / DEVELOPMENT</div>
+   <h3>Web Development</h3>
+   <p>Learn HTML, CSS and JavaScript from beginner to advanced.</p>
+  </div>
+
+  <div class="card">
+   <div class="number">06 / PROGRAMMING</div>
+   <h3>Coding & Tools</h3>
+   <p>Explore programming concepts, VS Code and useful developer tools.</p>
+  </div>
+
+ </div>
 </section>
 
 <footer>
-<p>© 2026 PC Master Tips | Made by Nagendra</p>
+ <p>© 2026 <span>PC MASTER TIPS</span> | Made by Nagendra Gupta</p>
+ <p>Learn Technology. Build Skills. Stay Secure.</p>
 </footer>
 
 </body>
