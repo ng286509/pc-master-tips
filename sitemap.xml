@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+ <url><loc>https://ng286509.github.io/pc-master-tips/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/tutorials.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/kali-linux.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/windows-tips.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/cyber-security.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/about.html</loc><priority>0.5</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/contact.html</loc><priority>0.5</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/faq.html</loc><priority>0.4</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/privacy-policy.html</loc><priority>0.3</priority></url>
+ <url><loc>https://ng286509.github.io/pc-master-tips/disclaimer.html</loc><priority>0.3</priority></url>
+</urlset>
