@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ng286509.github.io/pc-master-tips/sitemap.xml
