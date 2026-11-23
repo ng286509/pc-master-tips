@@ -3,19 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Secure member sign in for PC Master Tips.">
+<meta name="description" content="Secure member sign in and document purchase requests for PC Master Tips.">
 <meta name="theme-color" content="#050a08">
-<title>Member Login | PC Master Tips</title>
+<title>Member Portal | PC Master Tips</title>
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#123b23,#050a08 65%);color:#e2fbe9;font-family:Arial,sans-serif;display:grid;place-items:center;padding:22px}
-.panel{width:min(100%,470px);background:#0b1911;border:1px solid #39ff88;border-radius:16px;padding:30px;box-shadow:0 0 30px #39ff8825}
-.brand{color:#39ff88;font-weight:bold;letter-spacing:2px;text-align:center;font-size:22px}.portal-tag{text-align:center;color:#8fbd9d;font-size:10px;letter-spacing:2.5px;margin-top:10px;border-bottom:1px solid #1d5130;padding-bottom:18px}
-h1{text-align:center;font-size:25px;margin:18px 0 8px}p{color:#9bb8a5;line-height:1.6;text-align:center;font-size:14px}
-.tabs{display:flex;gap:8px;margin:22px 0}.tabs button{flex:1;padding:11px;border:1px solid #267a43;background:#07110b;color:#b9d9c3;border-radius:7px;cursor:pointer}.tabs button.active{background:#39ff88;color:#031008;font-weight:bold}
-label{display:block;color:#b9d9c3;font-size:13px;margin:14px 0 6px}input{width:100%;padding:12px;border-radius:7px;border:1px solid #267a43;background:#07110b;color:#e2fbe9;font-size:15px}
-.action{width:100%;margin-top:18px;padding:12px;background:#39ff88;color:#031008;border:0;border-radius:7px;font-weight:bold;cursor:pointer}.secondary{width:100%;margin-top:10px;padding:10px;background:transparent;color:#39ff88;border:1px solid #267a43;border-radius:7px;cursor:pointer}
-#message{min-height:38px;color:#9cffb8;margin-top:14px;overflow-wrap:anywhere}.error{color:#ffaaa8!important}.hint{font-size:12px;color:#83a58e}.back{display:block;text-align:center;color:#39ff88;margin-top:20px;text-decoration:none;font-size:14px}
-#member-area{display:none}.member-box{border:1px solid #267a43;background:#07110b;padding:16px;border-radius:9px;margin-top:18px;text-align:center}.dashboard-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}.dash-card{border:1px solid #267a43;background:#07110b;padding:18px;border-radius:10px}.dash-card h2{font-size:17px;color:#39ff88;margin:0 0 8px}.dash-card p{margin:6px 0 12px}.file-row{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #1d5130;padding:11px 0;text-align:left;font-size:13px;overflow-wrap:anywhere}.file-row a{color:#39ff88}.file-input{margin:8px 0}.status-note{font-size:12px;color:#9bb8a5;text-align:left}.success-line{color:#9cffb8!important}.danger-line{color:#ffaaa8!important}.welcome{font-size:13px;color:#9bb8a5}.member-box strong{color:#39ff88}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#123b23,#050a08 65%);color:#e2fbe9;font-family:Arial,sans-serif;display:grid;place-items:center;padding:22px}
+.panel{width:min(100%,680px);background:#0b1911;border:1px solid #39ff88;border-radius:16px;padding:30px;box-shadow:0 0 30px #39ff8825}
+.brand{color:#39ff88;font-weight:bold;letter-spacing:2px;text-align:center;font-size:22px}
+.portal-tag{text-align:center;color:#8fbd9d;font-size:10px;letter-spacing:2.5px;margin-top:10px;border-bottom:1px solid #1d5130;padding-bottom:18px}
+h1{text-align:center;font-size:25px;margin:18px 0 8px}
+p{color:#9bb8a5;line-height:1.6;text-align:center;font-size:14px}
+.tabs{display:flex;gap:8px;margin:22px 0}
+.tabs button{flex:1;padding:11px;border:1px solid #267a43;background:#07110b;color:#b9d9c3;border-radius:7px;cursor:pointer}
+.tabs button.active{background:#39ff88;color:#031008;font-weight:bold}
+label{display:block;color:#b9d9c3;font-size:13px;margin:14px 0 6px}
+input{width:100%;padding:12px;border-radius:7px;border:1px solid #267a43;background:#07110b;color:#e2fbe9;font-size:15px}
+.action{width:100%;margin-top:18px;padding:12px;background:#39ff88;color:#031008;border:0;border-radius:7px;font-weight:bold;cursor:pointer}
+.secondary{width:100%;margin-top:10px;padding:10px;background:transparent;color:#39ff88;border:1px solid #267a43;border-radius:7px;cursor:pointer}
+button:disabled{opacity:.6;cursor:wait}
+#message,#member-message,#purchase-message{min-height:30px;color:#9cffb8;margin-top:14px;overflow-wrap:anywhere}
+.error{color:#ffaaa8!important}
+.hint,.status-note{font-size:12px;color:#83a58e}
+.back{display:block;text-align:center;color:#39ff88;margin-top:20px;text-decoration:none;font-size:14px}
+#member-area{display:none}
+.member-box,.dash-card{border:1px solid #267a43;background:#07110b;padding:16px;border-radius:9px;margin-top:18px}
+.member-box{text-align:center}
+.member-box strong,.dash-card h2{color:#39ff88}
+.dash-card h2{font-size:18px;margin:0 0 8px}
+.dash-card p{text-align:left;margin:6px 0 12px}
+.dashboard-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
+.request-row{border-top:1px solid #1d5130;padding:12px 0;font-size:13px;overflow-wrap:anywhere}
+.request-row strong{color:#caffd8}
+.success-line{color:#9cffb8!important}
+.welcome{font-size:13px;color:#9bb8a5}
 </style>
 </head>
 <body>
@@ -43,22 +64,32 @@ label{display:block;color:#b9d9c3;font-size:13px;margin:14px 0 6px}input{width:1
  <section id="member-area">
   <h1>Welcome to Your Portal</h1>
   <p class="success-line">✓ Login successful. You are now inside the PC Master Tips Member Portal.</p>
-  <div class="member-box">Signed in as<br><strong id="member-email"></strong><p id="verification-status">Email verified ✓</p></div>
+  <div class="member-box">Signed in as<br><strong id="member-email"></strong><p>Email verified ✓</p></div>
   <div class="dashboard-grid">
    <section class="dash-card">
-    <h2>My Documents</h2>
-    <p>Upload and manage your personal study documents in your private member area.</p>
-    <label for="member-file">Choose a document</label>
-    <input class="file-input" id="member-file" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.jpg,.jpeg,.png">
-    <button class="action" id="upload-button" type="button">Upload Document</button>
-    <p class="status-note">Maximum file size: 10 MB. Allowed: PDF, Office documents, TXT, JPG and PNG. Files are intended to be private to your account.</p>
-    <p id="upload-message" aria-live="polite"></p>
-    <h2 style="margin-top:20px">My Uploaded Files</h2>
-    <div id="file-list"><p class="status-note">Loading your documents...</p></div>
+    <h2>Buy Documents</h2>
+    <p>Submit a request for the document you want. We will contact you to confirm the price and UPI payment details. Your document will be sent manually after payment is verified.</p>
+    <form id="purchase-form">
+     <label for="customer-name">Your full name</label>
+     <input id="customer-name" type="text" maxlength="100" autocomplete="name" required>
+     <label for="customer-whatsapp">WhatsApp number (with country code if needed)</label>
+     <input id="customer-whatsapp" type="tel" minlength="10" maxlength="15" placeholder="e.g. 9876543210" required>
+     <label for="document-id">Document ID</label>
+     <input id="document-id" type="text" maxlength="100" placeholder="Enter the document ID" required>
+     <label for="document-title">Document title</label>
+     <input id="document-title" type="text" maxlength="200" placeholder="Enter the document name" required>
+     <button class="action" id="purchase-button" type="submit">Submit Purchase Request</button>
+    </form>
+    <p id="purchase-message" aria-live="polite"></p>
+   </section>
+   <section class="dash-card">
+    <h2>My Purchase Requests</h2>
+    <p>Only requests linked to your signed-in account are shown here.</p>
+    <div id="request-list"><p class="status-note">Loading your requests...</p></div>
    </section>
    <section class="dash-card">
     <h2>Account</h2>
-    <p class="welcome">Your member login is active. Use Log out when finished, especially on a shared computer.</p>
+    <p class="welcome">Use Log out when finished, especially on a shared computer.</p>
     <button class="secondary" id="logout-button" type="button">Log out</button>
    </section>
   </div>
@@ -68,7 +99,7 @@ label{display:block;color:#b9d9c3;font-size:13px;margin:14px 0 6px}input{width:1
 </main>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDJARC3jgdmPbnMls0zuF3fFebfzKDfXlQ",
@@ -81,12 +112,13 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth();
-const storage=firebase.storage();
+const db=firebase.firestore();
 const authArea=document.getElementById('auth-area');
 const memberArea=document.getElementById('member-area');
 const form=document.getElementById('auth-form');
 const message=document.getElementById('message');
-const memberMessage=document.getElementById('member-message');
+const purchaseMessage=document.getElementById('purchase-message');
+const requestList=document.getElementById('request-list');
 let mode='login';
 function showMessage(text,isError=false){message.textContent=text;message.classList.toggle('error',isError)}
 function setMode(next){
@@ -111,11 +143,11 @@ form.addEventListener('submit',async event=>{
   if(mode==='signup'){
    const credential=await auth.createUserWithEmailAndPassword(email,password);
    await credential.user.sendEmailVerification();
-   showMessage('Account created. A verification email has been sent. Please check your inbox.');
+   showMessage('Account created. A verification email has been sent. Please verify your email, then log in.');
   }else{
    const credential=await auth.signInWithEmailAndPassword(email,password);
    if(!credential.user.emailVerified){
-    showMessage('Please verify your email first. Use the verification email sent when you created the account.',true);
+    showMessage('Please verify your email first. Check the verification email sent when you created the account.',true);
     await auth.signOut();
    }else{
     showMessage('Login successful. Opening your member portal...');
@@ -143,82 +175,84 @@ document.getElementById('reset-button').addEventListener('click',async()=>{
  try{await auth.sendPasswordResetEmail(email);showMessage('If an account exists for this email, a password reset email has been sent.');}
  catch(error){showMessage(error.message,true);}
 });
-document.getElementById('verify-button').addEventListener('click',async()=>{
- try{await auth.currentUser.sendEmailVerification();memberMessage.textContent='Verification email sent. Check your inbox.';}
- catch(error){memberMessage.textContent=error.message;}
-});
 document.getElementById('logout-button').addEventListener('click',()=>auth.signOut());
-
-const allowedExtensions=['pdf','doc','docx','xls','xlsx','ppt','pptx','txt','jpg','jpeg','png'];
-const uploadMessage=document.getElementById('upload-message');
-const fileList=document.getElementById('file-list');
-function showUploadMessage(text,isError=false){
- uploadMessage.textContent=text;
- uploadMessage.className=isError?'danger-line':'success-line';
+function showPurchaseMessage(text,isError=false){
+ purchaseMessage.textContent=text;
+ purchaseMessage.className=isError?'error':'success-line';
 }
-async function loadMemberFiles(user){
- fileList.textContent='Loading your documents...';
+async function loadPurchaseRequests(user){
+ requestList.textContent='Loading your requests...';
  try{
-  const folder=storage.ref('member-documents/'+user.uid);
-  const result=await folder.listAll();
-  fileList.replaceChildren();
-  if(!result.items.length){
+  const snapshot=await db.collection('purchaseRequests').where('uid','==',user.uid).get();
+  requestList.replaceChildren();
+  if(snapshot.empty){
    const empty=document.createElement('p');
    empty.className='status-note';
-   empty.textContent='No documents uploaded yet.';
-   fileList.appendChild(empty);
+   empty.textContent='You have not submitted any purchase requests yet.';
+   requestList.appendChild(empty);
    return;
   }
-  for(const item of result.items){
-   const url=await item.getDownloadURL();
+  const docs=snapshot.docs.slice().sort((a,b)=>{
+   const at=a.data().createdAt,bt=b.data().createdAt;
+   return (bt&&bt.toMillis?bt.toMillis():0)-(at&&at.toMillis?at.toMillis():0);
+  });
+  docs.forEach(doc=>{
+   const data=doc.data();
    const row=document.createElement('div');
-   row.className='file-row';
-   const name=document.createElement('span');
-   name.textContent=item.name.replace(/^\\d+_/,'');
-   const link=document.createElement('a');
-   link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Open';
-   row.append(name,link);fileList.appendChild(row);
-  }
+   row.className='request-row';
+   const title=document.createElement('strong');
+   title.textContent=data.documentTitle||'Document request';
+   const details=document.createElement('div');
+   details.textContent='ID: '+(data.documentId||'')+' · Status: '+(data.status||'pending');
+   row.append(title,details);
+   requestList.appendChild(row);
+  });
  }catch(error){
-  fileList.textContent=error.code==='storage/unauthorized'
-   ?'Private storage rules are not enabled yet. Complete the secure Storage setup before uploading.'
-   :'Could not load files: '+error.message;
+  requestList.textContent='Could not load requests. Please refresh the page. '+error.message;
  }
 }
-document.getElementById('upload-button').addEventListener('click',async()=>{
+document.getElementById('purchase-form').addEventListener('submit',async event=>{
+ event.preventDefault();
  const user=auth.currentUser;
- const picker=document.getElementById('member-file');
- const file=picker.files&&picker.files[0];
- if(!user){showUploadMessage('Please log in again.',true);return;}
- if(!file){showUploadMessage('Please choose a document first.',true);return;}
- const ext=(file.name.split('.').pop()||'').toLowerCase();
- if(!allowedExtensions.includes(ext)){showUploadMessage('This file type is not allowed.',true);return;}
- if(file.size>10*1024*1024){showUploadMessage('File is larger than 10 MB. Please choose a smaller file.',true);return;}
- const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
- const path='member-documents/'+user.uid+'/'+Date.now()+'_'+safeName;
- const button=document.getElementById('upload-button');
- button.disabled=true;button.textContent='Uploading...';
+ if(!user||!user.emailVerified){showPurchaseMessage('Please log in with a verified email account.',true);return;}
+ const name=document.getElementById('customer-name').value.trim();
+ const whatsapp=document.getElementById('customer-whatsapp').value.trim();
+ const documentId=document.getElementById('document-id').value.trim();
+ const documentTitle=document.getElementById('document-title').value.trim();
+ if(name.length<1||name.length>100||whatsapp.length<10||whatsapp.length>15||documentId.length<1||documentTitle.length<1){
+  showPurchaseMessage('Please check all fields. WhatsApp number must be 10 to 15 characters.',true);return;
+ }
+ const button=document.getElementById('purchase-button');
+ button.disabled=true;button.textContent='Submitting...';
  try{
-  await storage.ref(path).put(file,{contentType:file.type||'application/octet-stream',customMetadata:{ownerUid:user.uid}});
-  showUploadMessage('Upload complete. Your document is in your private member area.');
-  picker.value='';
-  await loadMemberFiles(user);
+  await db.collection('purchaseRequests').add({
+   uid:user.uid,
+   name:name,
+   email:user.email,
+   whatsapp:whatsapp,
+   documentId:documentId,
+   documentTitle:documentTitle,
+   status:'pending',
+   createdAt:firebase.firestore.FieldValue.serverTimestamp()
+  });
+  showPurchaseMessage('Purchase request submitted successfully. We will contact you about payment and delivery.');
+  event.target.reset();
+  await loadPurchaseRequests(user);
  }catch(error){
-  showUploadMessage(error.code==='storage/unauthorized'
-   ?'Upload blocked. Secure Firebase Storage rules must be set up first.'
-   :'Upload failed: '+error.message,true);
+  showPurchaseMessage('Request could not be submitted: '+error.message,true);
  }finally{
-  button.disabled=false;button.textContent='Upload Document';
+  button.disabled=false;button.textContent='Submit Purchase Request';
  }
 });
 auth.onAuthStateChanged(user=>{
  if(user && user.emailVerified){
-  authArea.style.display='none';memberArea.style.display='block';
+  authArea.style.display='none';
+  memberArea.style.display='block';
   document.getElementById('member-email').textContent=user.email;
-  document.getElementById('verification-status').textContent='Email verified ✓';
-  loadMemberFiles(user);
+  loadPurchaseRequests(user);
  }else{
-  authArea.style.display='block';memberArea.style.display='none';
+  authArea.style.display='block';
+  memberArea.style.display='none';
  }
 });
 </script>
