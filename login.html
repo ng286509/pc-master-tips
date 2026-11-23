@@ -99,6 +99,9 @@ form.addEventListener('submit',async event=>{
    if(!credential.user.emailVerified){
     showMessage('Please verify your email first. Use the verification email sent when you created the account.',true);
     await auth.signOut();
+   }else{
+    showMessage('Login successful. Opening PC Master Tips...');
+    window.location.replace('index.html');
    }
   }
  }catch(error){
@@ -130,6 +133,7 @@ document.getElementById('verify-button').addEventListener('click',async()=>{
 document.getElementById('logout-button').addEventListener('click',()=>auth.signOut());
 auth.onAuthStateChanged(user=>{
  if(user && user.emailVerified){
+  window.location.replace('index.html');
   authArea.style.display='none';memberArea.style.display='block';
   document.getElementById('member-email').textContent=user.email;
   document.getElementById('verification-status').textContent='Email verified ✓';
