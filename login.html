@@ -9,7 +9,7 @@
 <style>
 *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#123b23,#050a08 65%);color:#e2fbe9;font-family:Arial,sans-serif;display:grid;place-items:center;padding:22px}
 .panel{width:min(100%,470px);background:#0b1911;border:1px solid #39ff88;border-radius:16px;padding:30px;box-shadow:0 0 30px #39ff8825}
-.brand{color:#39ff88;font-weight:bold;letter-spacing:2px;text-align:center;font-size:22px}
+.brand{color:#39ff88;font-weight:bold;letter-spacing:2px;text-align:center;font-size:22px}.portal-tag{text-align:center;color:#8fbd9d;font-size:10px;letter-spacing:2.5px;margin-top:10px;border-bottom:1px solid #1d5130;padding-bottom:18px}
 h1{text-align:center;font-size:25px;margin:18px 0 8px}p{color:#9bb8a5;line-height:1.6;text-align:center;font-size:14px}
 .tabs{display:flex;gap:8px;margin:22px 0}.tabs button{flex:1;padding:11px;border:1px solid #267a43;background:#07110b;color:#b9d9c3;border-radius:7px;cursor:pointer}.tabs button.active{background:#39ff88;color:#031008;font-weight:bold}
 label{display:block;color:#b9d9c3;font-size:13px;margin:14px 0 6px}input{width:100%;padding:12px;border-radius:7px;border:1px solid #267a43;background:#07110b;color:#e2fbe9;font-size:15px}
@@ -21,6 +21,7 @@ label{display:block;color:#b9d9c3;font-size:13px;margin:14px 0 6px}input{width:1
 <body>
 <main class="panel">
  <div class="brand">PC MASTER TIPS</div>
+ <div class="portal-tag">◆ SECURE MEMBER PORTAL</div>
  <section id="auth-area">
   <h1 id="heading">Member Login</h1>
   <p>Sign in to your PC Master Tips member account, or create a new account.</p>
@@ -47,7 +48,7 @@ label{display:block;color:#b9d9c3;font-size:13px;margin:14px 0 6px}input{width:1
   <button class="secondary" id="logout-button" type="button">Log out</button>
   <p id="member-message" aria-live="polite"></p>
  </section>
- <a class="back" href="index.html">← Back to PC Master Tips</a>
+ <a class="back" href="index.html">← Return to Main Website</a>
 </main>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
