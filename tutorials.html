@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorials | PC Master Tips</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#050a08;color:#e2fbe9;font-family:Arial,sans-serif;line-height:1.65}
+header{background:#08140e;border-bottom:1px solid #17472b;padding:20px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{color:#39ff88;font-size:23px;font-weight:bold;text-shadow:0 0 12px #39ff88}
+nav a{color:#d9fbe4;text-decoration:none;margin-left:18px}
+nav a:hover{color:#39ff88}
+main{max-width:1050px;margin:auto;padding:55px 7%}
+.kicker{color:#39ff88;font:13px monospace;letter-spacing:2px}
+h1{font-size:38px;margin:12px 0;color:#e2fbe9}
+.intro{color:#9bb8a5;max-width:700px;margin-bottom:32px}
+.lesson{background:linear-gradient(145deg,#102319,#09140d);border:1px solid #1b5731;border-radius:12px;padding:24px;margin:18px 0}
+.lesson h2{color:#39ff88;margin-bottom:8px}
+.lesson p{color:#b8d2c0}
+.lesson ul{padding-left:22px;margin-top:12px;color:#cce8d5}
+code{color:#8cffad;background:#07110b;padding:3px 7px;border-radius:4px}
+.note{border-left:3px solid #39ff88;padding:10px 14px;margin-top:15px;background:#0b1b11;color:#a9c8b3}
+a.back{display:inline-block;color:#39ff88;margin-top:25px}
+footer{text-align:center;padding:25px;background:#030805;color:#83a58e;border-top:1px solid #17472b}
+@media(max-width:600px){header{justify-content:center;text-align:center}nav a{margin:0 8px}h1{font-size:30px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">[ PC MASTER TIPS ]</div>
+ <nav><a href="index.html">Home</a><a href="#linux">Linux</a><a href="#windows">Windows</a><a href="#security">Cyber Security</a><a href="#web">Web Coding</a></nav>
+</header>
+<main>
+ <div class="kicker">/// LEARNING DATABASE</div>
+ <h1>Technology Tutorials</h1>
+ <p class="intro">Welcome to the PC Master Tips learning area. Start with the basics, practise in your own lab, and build your skills step by step.</p>
+
+ <article class="lesson" id="linux">
+  <h2>01. Kali Linux & Terminal Basics</h2>
+  <p>Learn the Linux terminal and understand what each command does before running it.</p>
+  <ul>
+   <li><code>pwd</code> — show your current folder.</li>
+   <li><code>ls</code> — list files and folders.</li>
+   <li><code>cd Documents</code> — move into the Documents folder.</li>
+   <li><code>mkdir practice</code> — create a practice folder.</li>
+   <li><code>ip addr</code> — view network interface information on your own device.</li>
+  </ul>
+  <div class="note">Practise commands in your own Kali Linux virtual machine. Use security tools only on systems you own or have permission to test.</div>
+ </article>
+
+ <article class="lesson" id="windows">
+  <h2>02. Windows Tips</h2>
+  <p>Useful shortcuts to work faster on your Windows computer.</p>
+  <ul>
+   <li><code>Win + E</code> — open File Explorer.</li>
+   <li><code>Win + R</code> — open the Run dialog.</li>
+   <li><code>Ctrl + Shift + Esc</code> — open Task Manager.</li>
+   <li><code>Win + Shift + S</code> — capture a selected screenshot.</li>
+  </ul>
+ </article>
+
+ <article class="lesson" id="security">
+  <h2>03. Cyber Security Awareness</h2>
+  <p>Learn to recognise suspicious links, fake login pages, unsafe attachments and social-engineering attempts.</p>
+  <ul>
+   <li>Check the website address before entering information.</li>
+   <li>Use unique passwords and enable multi-factor authentication.</li>
+   <li>Never share OTPs, passwords or recovery codes.</li>
+   <li>Practise phishing awareness with dummy data in a private training lab only.</li>
+  </ul>
+ </article>
+
+ <article class="lesson" id="web">
+  <h2>04. Web Development</h2>
+  <p>Begin building websites with the three core technologies.</p>
+  <ul>
+   <li><code>HTML</code> — structures the page content.</li>
+   <li><code>CSS</code> — controls colours, layout and design.</li>
+   <li><code>JavaScript</code> — adds interactivity.</li>
+  </ul>
+ </article>
+ <a class="back" href="index.html">← Back to Home</a>
+</main>
+<footer>© 2026 PC MASTER TIPS | Made by Nagendra Gupta</footer>
+</body>
+</html>
