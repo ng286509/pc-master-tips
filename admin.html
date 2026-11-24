@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050a08">
+<title>Admin Dashboard | PC Master Tips</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050a08;color:#e2fbe9;font:15px Arial,sans-serif;padding:22px}
+main{max-width:1100px;margin:24px auto;background:#0b1911;border:1px solid #39ff88;border-radius:15px;padding:24px;box-shadow:0 0 28px #39ff8820}
+.brand{color:#39ff88;font-weight:bold;letter-spacing:2px}h1{font-size:25px;margin:10px 0}p,.muted{color:#9bb8a5;line-height:1.5}
+input,select,button{font:inherit;border-radius:7px;padding:11px;border:1px solid #267a43}
+input,select{background:#07110b;color:#e2fbe9;width:100%;margin:6px 0 12px}
+button{cursor:pointer;background:#39ff88;color:#031008;font-weight:bold}
+.secondary{background:#07110b;color:#39ff88}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{flex:1}
+#dashboard{display:none}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.stat{background:#07110b;border:1px solid #267a43;padding:15px;border-radius:9px}.stat b{display:block;color:#39ff88;font-size:24px;margin-top:6px}
+#notice{min-height:24px;color:#9cffb8}.error{color:#ffaaa8!important}
+.table-wrap{overflow-x:auto;border:1px solid #267a43;border-radius:9px}
+table{border-collapse:collapse;width:100%;min-width:850px}th,td{text-align:left;padding:12px;border-bottom:1px solid #1d5130;vertical-align:top;font-size:13px}th{color:#39ff88;background:#102719}
+td input,td select{min-width:120px;margin:0;padding:8px}.actions button{padding:8px 10px}
+a{color:#39ff88}.small{font-size:12px}
+@media(max-width:600px){body{padding:10px}main{padding:16px;margin:8px auto}h1{font-size:21px}}
+</style>
+</head>
+<body>
+<main>
+ <div class="brand">PC MASTER TIPS · ADMIN</div>
+ <h1>Admin Dashboard</h1>
+ <p>Private order management. Sign in with the authorized administrator account.</p>
+ <section id="login">
+  <label for="email">Admin email</label><input id="email" type="email" autocomplete="username" placeholder="Admin email">
+  <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Your account password">
+  <button id="loginBtn">Secure Admin Login</button>
+ </section>
+ <section id="dashboard">
+  <div class="row"><p id="who"></p><button class="secondary" id="refreshBtn">Refresh Orders</button><button class="secondary" id="logoutBtn">Log out</button></div>
+  <div class="stats">
+   <div class="stat">All Requests<b id="total">0</b></div>
+   <div class="stat">Pending<b id="pending">0</b></div>
+   <div class="stat">Paid<b id="paid">0</b></div>
+   <div class="stat">Completed<b id="completed">0</b></div>
+  </div>
+  <label for="filter">Filter orders</label>
+  <div class="row"><input id="filter" type="search" placeholder="Search name, email, WhatsApp, order or document"><select id="statusFilter"><option value="all">All statuses</option><option>pending</option><option>payment_verified</option><option>paid</option><option>completed</option><option>cancelled</option></select></div>
+  <div class="table-wrap"><table><thead><tr><th>Order ID</th><th>Customer</th><th>WhatsApp</th><th>Document</th><th>Created</th><th>Status</th><th>Save</th></tr></thead><tbody id="orders"><tr><td colspan="7">Loading…</td></tr></tbody></table></div>
+ </section>
+ <p id="notice" aria-live="polite"></p>
+ <p class="small">Admin access is also enforced by Firestore Security Rules. Never share this account password. Verify payments in your bank/UPI app before changing an order to Paid.</p>
+ <p><a href="login.html">← Member Portal</a> · <a href="index.html">Main Website</a></p>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const ADMIN_EMAIL='ng286509@gmail.com';
+const firebaseConfig={apiKey:'AIzaSyDJARC3jgdmPbnMls0zuF3fFebfzKDfXlQ',authDomain:'pc-master-tips.firebaseapp.com',projectId:'pc-master-tips',storageBucket:'pc-master-tips.firebasestorage.app',messagingSenderId:'319428378104',appId:'1:319428378104:web:7816503d3255a87464aa0d',measurementId:'G-32GNP58GX1'};
+firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth(),db=firebase.firestore();
+const $=id=>document.getElementById(id);
+let allOrders=[];
+function note(t,bad=false){$('notice').textContent=t;$('notice').className=bad?'error':''}
+function adminCheck(user){return !!user&&user.emailVerified&&user.email.toLowerCase()===ADMIN_EMAIL.toLowerCase()}
+function dateText(v){if(!v||!v.toDate)return '—';return v.toDate().toLocaleString()}
+function safeText(tag,value){const el=document.createElement(tag);el.textContent=value==null?'':String(value);return el}
+async function loadOrders(){
+ note('Loading orders…');
+ try{
+  const snap=await db.collection('purchaseRequests').orderBy('createdAt','desc').get();
+  allOrders=snap.docs.map(d=>({id:d.id,...d.data()}));
+  renderOrders();note('Loaded '+allOrders.length+' order(s).');
+ }catch(e){note('Could not load orders: '+e.message,true)}
+}
+function renderOrders(){
+ const q=$('filter').value.trim().toLowerCase(),sf=$('statusFilter').value;
+ const shown=allOrders.filter(o=>{
+  const hay=[o.id,o.name,o.email,o.whatsapp,o.documentId,o.documentTitle].join(' ').toLowerCase();
+  return (!q||hay.includes(q))&&(sf==='all'||(o.status||'pending')===sf);
+ });
+ $('total').textContent=allOrders.length;
+ $('pending').textContent=allOrders.filter(o=>(o.status||'pending')==='pending').length;
+ $('paid').textContent=allOrders.filter(o=>['paid','payment_verified'].includes(o.status)).length;
+ $('completed').textContent=allOrders.filter(o=>o.status==='completed').length;
+ const body=$('orders');body.replaceChildren();
+ if(!shown.length){body.appendChild(safeText('tr',''));const td=safeText('td','No matching orders');td.colSpan=7;body.lastChild.appendChild(td);return}
+ shown.forEach(o=>{
+  const tr=document.createElement('tr');
+  const order=safeText('td',o.id);tr.appendChild(order);
+  const customer=document.createElement('td');customer.append(safeText('strong',o.name||'—'),document.createElement('br'),safeText('span',o.email||'—'));tr.appendChild(customer);
+  tr.appendChild(safeText('td',o.whatsapp||'—'));
+  const doc=document.createElement('td');doc.append(safeText('strong',o.documentTitle||'—'),document.createElement('br'),safeText('span','ID: '+(o.documentId||'—')));tr.appendChild(doc);
+  tr.appendChild(safeText('td',dateText(o.createdAt)));
+  const statusCell=document.createElement('td'),select=document.createElement('select');
+  ['pending','payment_verified','paid','completed','cancelled'].forEach(v=>{const op=safeText('option',v);op.value=v;select.appendChild(op)});
+  select.value=o.status||'pending';statusCell.appendChild(select);tr.appendChild(statusCell);
+  const action=document.createElement('td'),btn=safeText('button','Save');btn.type='button';btn.addEventListener('click',async()=>{
+   btn.disabled=true;
+   try{await db.collection('purchaseRequests').doc(o.id).update({status:select.value});o.status=select.value;renderOrders();note('Order status updated.');}
+   catch(e){note('Update failed: '+e.message,true);btn.disabled=false}
+  });action.appendChild(btn);tr.appendChild(action);body.appendChild(tr);
+ });
+}
+$('loginBtn').addEventListener('click',async()=>{
+ const email=$('email').value.trim(),password=$('password').value;
+ if(email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()){note('This email is not authorized for Admin access.',true);return}
+ $('loginBtn').disabled=true;
+ try{await auth.signInWithEmailAndPassword(email,password);note('Signed in.');}
+ catch(e){note('Login failed: '+e.message,true)}
+ finally{$('loginBtn').disabled=false}
+});
+$('refreshBtn').addEventListener('click',loadOrders);
+$('logoutBtn').addEventListener('click',()=>auth.signOut());
+$('filter').addEventListener('input',renderOrders);$('statusFilter').addEventListener('change',renderOrders);
+auth.onAuthStateChanged(async user=>{
+ if(!user){$('login').style.display='block';$('dashboard').style.display='none';return}
+ if(!adminCheck(user)){await auth.signOut();note('Access denied. Use the verified authorized Admin email.',true);return}
+ $('login').style.display='none';$('dashboard').style.display='block';$('who').textContent='Signed in as '+user.email;
+ await loadOrders();
+});
+</script>
+</body>
+</html>
