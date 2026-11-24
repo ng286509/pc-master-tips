@@ -204,7 +204,7 @@ async function loadPurchaseRequests(user){
    const title=document.createElement('strong');
    title.textContent=data.documentTitle||'Document request';
    const details=document.createElement('div');
-   details.textContent='ID: '+(data.documentId||'')+' · Status: '+(data.status||'pending');
+   details.textContent='Order ID: '+doc.id+' · Document ID: '+(data.documentId||'')+' · Status: '+(data.status||'pending');
    row.append(title,details);
    requestList.appendChild(row);
   });
